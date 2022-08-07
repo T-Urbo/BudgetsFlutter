@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  database:
+    image: "postgres:latest"
+    ports:
+      - ${DATABASE_PORT:-5432}:${DATABASE_PORT:-5432}
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-username} 
+      POSTGRES_PASSWORD: ${DATABASE_PASS:-password} 
+      POSTGRES_DB: ${DATABASE_NAME:-default_database}   
