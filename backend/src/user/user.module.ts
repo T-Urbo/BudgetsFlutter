@@ -6,10 +6,7 @@ import { UserRepository } from './user.repository';
 import { UserService } from './user.service';
 
 @Module({
-	imports: [
-		TypeOrmModule.forFeature([UserRepository]),
-		PassportModule.register({ defaultStrategy: 'jwt' }),
-	],
+	imports: [TypeOrmModule.forFeature([UserRepository]), PassportModule.register({ defaultStrategy: 'jwt' })],
 	providers: [UserService],
 	controllers: [UserController],
 })

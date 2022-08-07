@@ -29,13 +29,10 @@ export class AuthService {
 		try {
 			const user = this.userRepository.create({
 				...credentials,
-				password: bcrypt.hashSync(
-					credentials.password,
-					Number(this.configService.get<number>('SHIFT')),
-				),
+				password: bcrypt.hashSync(credentials.password, Number(this.configService.get<number>('SHIFT'))),
 			});
 			await user.save();
-			
+
 			const wallet = this.walletRepository.create({ userId: user.id });
 			await wallet.save();
 

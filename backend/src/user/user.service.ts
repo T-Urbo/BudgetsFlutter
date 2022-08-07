@@ -13,8 +13,8 @@ export class UserService {
 
 	async findById(id: number): Promise<Record<string, any>> {
 		try {
-			const user = await this.userRepository.findOneOrFail(id,{
-				relations: ['wallet']
+			const user = await this.userRepository.findOneOrFail(id, {
+				relations: ['wallet'],
 			});
 			this.logger.log(`GET USER ID=${id}`);
 			return user.toJson();

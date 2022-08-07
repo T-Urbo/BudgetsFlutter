@@ -12,10 +12,7 @@ export class ExpenseController {
 	constructor(private readonly expenseService: ExpenseService) {}
 
 	@Post()
-	create(
-		@User('walletId') walletId: number,
-		@Body() createExpenseDto: CreateExpenseDto,
-	): Promise<ExpenseEntity> {
+	create(@User('walletId') walletId: number, @Body() createExpenseDto: CreateExpenseDto): Promise<ExpenseEntity> {
 		return this.expenseService.create(walletId, createExpenseDto);
 	}
 

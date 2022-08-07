@@ -41,13 +41,11 @@ export class CategoryService {
 		}
 	}
 
-	async findAllGroupedByCategory(
-		walletId: number,
-	): Promise<any> {
+	async findAllGroupedByCategory(walletId: number): Promise<any> {
 		try {
-			const categories = (
-				await this.categoryRepository.find({ where: { walletId }, relations: ['expenses'] })
-			).map((c) => ({ ...c, overallCost: c.expenses.map(e => e.cost).reduce((acc, e) => acc + e, 0)}));
+			const categories = (await this.categoryRepository.find({ where: { walletId }, relations: ['expenses'] })).map(
+				(c) => ({ ...c, overallCost: c.expenses.map((e) => e.cost).reduce((acc, e) => acc + e, 0) }),
+			);
 			this.logger.log(`GET ALL CATEGORIES WALLET_ID=${walletId}`);
 			return categories;
 		} catch (error) {

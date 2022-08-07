@@ -12,10 +12,7 @@ export class CategoryController {
 	constructor(private categoryService: CategoryService) {}
 
 	@Post()
-	create(
-		@User('walletId') walletId: number,
-		@Body() createCategoryDto: CreateCategoryDto,
-	): Promise<CategoryEntity> {
+	create(@User('walletId') walletId: number, @Body() createCategoryDto: CreateCategoryDto): Promise<CategoryEntity> {
 		return this.categoryService.create(walletId, createCategoryDto);
 	}
 
@@ -32,10 +29,7 @@ export class CategoryController {
 
 	@Patch(':id')
 	@UseGuards(CategoryOwnerGuard)
-	update(
-		@Param('id') id: number,
-		@Body() updateCategoryDto: UpdateCategoryDto,
-	): Promise<CategoryEntity> {
+	update(@Param('id') id: number, @Body() updateCategoryDto: UpdateCategoryDto): Promise<CategoryEntity> {
 		return this.categoryService.update(id, updateCategoryDto);
 	}
 
