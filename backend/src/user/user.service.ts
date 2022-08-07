@@ -29,9 +29,9 @@ export class UserService {
 			const user = await this.userRepository.findOneOrFail(id);
 			data.password = bcrypt.hashSync(data.password, 10);
 			const res = await this.userRepository.save({ ...user, ...data });
-			const { password, ...resWithoutPassword } = res;
+			delete res.password;
 			this.logger.log(`UPDATE USER ID=${id}`);
-			return resWithoutPassword;
+			return res;
 		} catch (error) {
 			this.logger.error(error);
 			throw new NotFoundException();
@@ -42,9 +42,9 @@ export class UserService {
 		try {
 			const user = await this.userRepository.findOneOrFail(id);
 			await this.userRepository.delete({ id: user.id });
-			const { password, ...userWithoutPassword } = user;
+			delete user.password;
 			this.logger.log(`DELETE USER ID=${id}`);
-			return userWithoutPassword;
+			return user;
 		} catch (error) {
 			this.logger.error(error);
 			throw new NotFoundException();
