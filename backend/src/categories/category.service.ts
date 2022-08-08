@@ -1,5 +1,5 @@
 import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
-import { UserRepository } from 'src/user/user.repository';
+import { UserRepository } from '../user/user.repository';
 import { CreateCategoryDto, UpdateCategoryDto } from './category.dto';
 import { CategoryEntity } from './category.entity';
 import { CategoryRepository } from './category.repository';

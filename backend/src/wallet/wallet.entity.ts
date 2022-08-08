@@ -1,7 +1,7 @@
-import { CategoryEntity } from 'src/categories/category.entity';
-import { AbstractEntity } from 'src/common/abstract-entity';
-import { ExpenseEntity } from 'src/expense/expense.entity';
-import { UserEntity } from 'src/user/user.entity';
+import { CategoryEntity } from '../categories/category.entity';
+import { AbstractEntity } from '../common/abstract-entity';
+import { ExpenseEntity } from '../expense/expense.entity';
+import { UserEntity } from '../user/user.entity';
 import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 
 @Entity('wallets')

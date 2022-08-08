@@ -1,7 +1,7 @@
-import { AbstractEntity } from 'src/common/abstract-entity';
-import { ExpenseEntity } from 'src/expense/expense.entity';
-import { WalletEntity } from 'src/wallet/wallet.entity';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
+import { AbstractEntity } from '../common/abstract-entity';
+import { ExpenseEntity } from '../expense/expense.entity';
+import { WalletEntity } from '../wallet/wallet.entity';
 
 @Entity('categories')
 export class CategoryEntity extends AbstractEntity {

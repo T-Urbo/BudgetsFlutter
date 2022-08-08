@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { User } from 'src/user/user.decorator';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { User } from '../user/user.decorator';
 import { CreateExpenseDto, UpdateExpenseDto } from './expense.dto';
 import { ExpenseEntity } from './expense.entity';
 import { CategoryOwnerGuard } from './expense.guard';

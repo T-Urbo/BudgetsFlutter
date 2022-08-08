@@ -1,9 +1,9 @@
 import { Column, Entity, OneToOne, Unique } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
-import { IsEmail, MinLength } from 'class-validator';
-import { AbstractEntity } from 'src/common/abstract-entity';
 import { Exclude, instanceToPlain } from 'class-transformer';
-import { WalletEntity } from 'src/wallet/wallet.entity';
+import { IsEmail, MinLength } from 'class-validator';
+import { AbstractEntity } from '../common/abstract-entity';
+import { WalletEntity } from '../wallet/wallet.entity';
 
 @Entity('users')
 @Unique('users_unique', ['email', 'username'])
