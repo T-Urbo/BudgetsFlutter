@@ -17,7 +17,17 @@ export class CategoryController {
 	}
 
 	@Get()
-	findAllGroupedByCategory(@User('walletId') walletId: number): Promise<any> {
+	findAllGroupedByCategory(@User('walletId') walletId: number): Promise<
+		{
+			overallCost: number;
+			name: string;
+			color: string;
+			walletId: number;
+			id: number;
+			created: Date;
+			updated: Date;
+		}[]
+	> {
 		return this.categoryService.findAllGroupedByCategory(walletId);
 	}
 

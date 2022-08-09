@@ -25,7 +25,9 @@ export class AuthService {
 		this.logger = new Logger();
 	}
 
-	async register(credentials: RegisterDto): Promise<any> {
+	async register(credentials: RegisterDto): Promise<{
+		user: { email: string; username: string; walletId: number; token: string };
+	}> {
 		try {
 			const user = this.userRepository.create({
 				...credentials,
@@ -39,7 +41,7 @@ export class AuthService {
 			const payload = { id: user.id };
 			const token = this.jwtService.sign(payload);
 			this.logger.log(`USER REGISTERED ID=${user.id}`);
-			return { user: { ...user.toJson(), walletId: wallet.id, token } };
+			return { user: { ...user, walletId: wallet.id, token } };
 		} catch (error) {
 			this.logger.error(error);
 			if (error.code === '23505') {
@@ -49,7 +51,9 @@ export class AuthService {
 		}
 	}
 
-	async login({ email, password }: LoginDto): Promise<any> {
+	async login({ email, password }: LoginDto): Promise<{
+		user: { email: string; username: string; password: string; walletId: number; token: string };
+	}> {
 		try {
 			const user = await this.userRepository.findOne({ where: { email } });
 			const isValid = user.comparePassword(password);
@@ -60,7 +64,7 @@ export class AuthService {
 			const payload = { id: user.id };
 			const token = this.jwtService.sign(payload);
 			this.logger.log(`USER LOGGED IN ID=${user.id}`);
-			return { user: { ...user.toJson(), walletId: wallet.id, token } };
+			return { user: { ...user, walletId: wallet.id, token } };
 		} catch (error) {
 			this.logger.error(error);
 			throw new UnauthorizedException('Invalid credentials');

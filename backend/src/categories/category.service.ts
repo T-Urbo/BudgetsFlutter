@@ -41,7 +41,17 @@ export class CategoryService {
 		}
 	}
 
-	async findAllGroupedByCategory(walletId: number): Promise<any> {
+	async findAllGroupedByCategory(walletId: number): Promise<
+		{
+			overallCost: number;
+			name: string;
+			color: string;
+			walletId: number;
+			id: number;
+			created: Date;
+			updated: Date;
+		}[]
+	> {
 		try {
 			const categories = (await this.categoryRepository.find({ where: { walletId }, relations: ['expenses'] })).map(
 				(c) => ({ ...c, overallCost: c.expenses.map((e) => e.cost).reduce((acc, e) => acc + e, 0) }),
