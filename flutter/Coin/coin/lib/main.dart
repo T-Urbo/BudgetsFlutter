@@ -1,7 +1,7 @@
-import 'dart:ui';
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() => runApp(HomePage());
 
@@ -20,62 +20,133 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> messagesList = [
-      "Keeping Your Personal Finances On Track",
-      "Keeping Your Personal Finances On Track",
-      "Keeping Your Personal Finances On Track"
-    ];
-
+    RichText text;
     return MaterialApp(
       title: 'Coin',
       theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFEFEFEF)),
       // ignore: prefer_const_constructors
       home: Scaffold(
-          body: SizedBox(
-        width: 400,
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const SizedBox(
-            width: 300,
-            height: 300,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Icon(Icons.arrow_back_ios_new),
+        resizeToAvoidBottomInset: false,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            const SizedBox(
+              height: 300,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Icon(Icons.arrow_back_ios_new),
+              ),
             ),
-          ),
-          SizedBox(
-            width: 300,
-            height: 300,
-            child: Align(
-              alignment: Alignment.center,
-              child: SizedBox(
-                  width: 250,
-                  height: 80,
-                  child: CarouselSlider.builder(
-                    itemCount: messagesList.length,
-                    itemBuilder: (context, index, realIndex) {
-                      return buildView(context);
-                    },
-                    options: CarouselOptions(
-                      height: 400,
+            SizedBox(
+              height: 300,
+              width: 200,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: PageView(
+                  controller: _controller,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    SizedBox(
+                      height: 800,
+                      width: 600,
+                      child: Column(
+                        children: [
+                          const Text(
+                            "Keep Your Personal Finances On Track",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          const Text(
+                            "We help you save your money",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  )),
+                    SizedBox(
+                      height: 800,
+                      width: 600,
+                      child: Column(
+                        children: [
+                          const Text(
+                            "My first flutter app",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          const Text(
+                            "Lets go!",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 800,
+                      width: 600,
+                      child: Column(
+                        children: [
+                          const Text(
+                            "Crossplatform feels great!",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          const Text(
+                            "React sosat'",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-          SizedBox(
-            width: 280,
-            height: 40,
-            child: Align(
-                alignment: Alignment.bottomCenter,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(280, 40),
-                        primary: Colors.black,
-                        shape: const StadiumBorder()),
-                    onPressed: () {},
-                    child: const Text("Get Started"))),
-          ),
-        ]),
-      )),
+            SmoothPageIndicator(
+              controller: _controller,
+              count: 3,
+              effect: ScrollingDotsEffect(
+                dotColor: Colors.grey,
+                activeDotColor: Colors.grey,
+              ),
+            ),
+            SizedBox(
+              width: 280,
+              height: 40,
+              child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(280, 40),
+                          primary: Colors.black,
+                          shape: const StadiumBorder()),
+                      onPressed: () {},
+                      child: const Text("Get Started"))),
+            ),
+          ],
+        ),
+      ),
     );
 
     // ignore: dead_code
@@ -83,7 +154,51 @@ class HomePage extends StatelessWidget {
 }
 
 // LIST VIEW
-
+//
+//// ignore: prefer_const_literals_to_create_immutables
+//   children: [
+//     // ignore: prefer_const_constructors
+//     SizedBox(
+//       height: 300,
+//       width: 200,
+//       child: const Text(
+//         """
+//           Keeping Your Personal Finances On Track
+//           We help you save your money
+//           """,
+//         textAlign: TextAlign.center,
+//         // ignore: unnecessary_const
+//         style: const TextStyle(
+//           fontSize: 14.0,
+//           color: Colors.black,
+//         ),
+//       ),
+//     ),
+//     // ignore: prefer_const_constructors
+//     SizedBox(
+//       height: 300,
+//       width: 200,
+//       child: const Text(
+//         """
+//           data1
+//           """,
+//         textAlign: TextAlign.center,
+//       ),
+//     ),
+//     // ignore: prefer_const_constructors
+//     SizedBox(
+//       height: 300,
+//       width: 200,
+//       child: const Text(
+//         """
+//           data2
+//           """,
+//         textAlign: TextAlign.center,
+//       ),
+//     )
+//   ],
+// )
+//
 //  ListView(
 //                       scrollDirection: Axis.horizontal,
 //                       children: <Widget>[
