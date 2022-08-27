@@ -2,6 +2,23 @@
 
 import 'package:coin/pages/welcome_screen/view/welcome_screen_view.dart';
 import 'package:flutter/material.dart';
-import 'lib/pages/welcome_screen/widgets/welcome_screen_widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'pages/welcome_screen/view/welcome_screen_view.dart';
 
-void main() => runApp(WelcomeScreen());
+void main() => runApp(DengeApp());
+
+class DengeApp extends StatelessWidget {
+  const DengeApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        textTheme: GoogleFonts.lexendDecaTextTheme(
+          Theme.of(context).textTheme,
+        ),
+      ),
+      home: WelcomeScreen(),
+    );
+  }
+}

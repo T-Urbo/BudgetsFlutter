@@ -1,6 +1,8 @@
 // Place Scaffold here!
 
 import 'package:coin/pages/welcome_screen/widgets/welcome_screen_widgets.dart';
+import 'package:coin/pages/global_widgets/custom_page_route.dart';
+
 import 'package:flutter/material.dart';
 
 export 'welcome_screen_view.dart';

@@ -1,6 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:coin/pages/login/view/login_screen_view.dart';
+import 'package:coin/pages/global_widgets/custom_page_route.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 export 'welcome_screen_widgets.dart';
@@ -44,9 +48,10 @@ class GreetingsTextPageView extends StatelessWidget {
                         "Quickly Grow Your Money",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
                       const Text(
                         "With Our Apllication",
@@ -161,7 +166,9 @@ class GetStartedButton extends StatelessWidget {
                   minimumSize: const Size(350, 56),
                   primary: const Color.fromRGBO(25, 33, 38, 1),
                   shape: const StadiumBorder()),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, CustomPageRoute(child: LoginScreen()));
+              },
               child: const Text("Get Started"))),
     );
   }
