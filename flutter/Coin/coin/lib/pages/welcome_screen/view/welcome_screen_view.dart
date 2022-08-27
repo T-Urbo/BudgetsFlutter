@@ -32,9 +32,9 @@ class WelcomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ImageSizedBox(),
-            GreetingsTextPageView(),
-            GetStartedButton(),
+            buildImageSizedBox(),
+            buildGreetingsTextPageView(),
+            buildGetStartedButton(),
           ],
         ),
       ),

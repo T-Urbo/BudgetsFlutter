@@ -10,7 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'welcome_screen_widgets.dart';
 
 // ignore: use_key_in_widget_constructors
-class ImageSizedBox extends StatelessWidget {
+class buildImageSizedBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -23,7 +23,7 @@ class ImageSizedBox extends StatelessWidget {
 }
 
 // ignore: use_key_in_widget_constructors
-class GreetingsTextPageView extends StatelessWidget {
+class buildGreetingsTextPageView extends StatelessWidget {
   final _controller = PageController();
 
   @override
@@ -153,7 +153,7 @@ class GreetingsTextPageView extends StatelessWidget {
   }
 }
 
-class GetStartedButton extends StatelessWidget {
+class buildGetStartedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -163,9 +163,10 @@ class GetStartedButton extends StatelessWidget {
           alignment: Alignment.center,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(350, 56),
-                  primary: const Color.fromRGBO(25, 33, 38, 1),
-                  shape: const StadiumBorder()),
+                minimumSize: const Size(350, 56),
+                primary: const Color.fromRGBO(25, 33, 38, 1),
+                shape: const StadiumBorder(),
+              ),
               onPressed: () {
                 Navigator.push(context, CustomPageRoute(child: LoginScreen()));
               },

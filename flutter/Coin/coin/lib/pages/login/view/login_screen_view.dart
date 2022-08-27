@@ -1,4 +1,5 @@
 import 'package:coin/pages/login/widgets/login_screen_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -159,6 +160,51 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Widget buildEnterButton() {
+    return SizedBox(
+      width: 350,
+      height: 56,
+      child: Align(
+        alignment: Alignment.center,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size(350.0, 56.0),
+            primary: const Color.fromRGBO(234, 234, 234, 1),
+            shape: const StadiumBorder(),
+            elevation: 0.0,
+          ),
+          onPressed: () {
+            // go to home page
+          },
+          child: const Text(
+            "Enter",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20.0,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildForgetPasswordButton() {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+              text: "Forgot password?",
+              style: TextStyle(color: Color.fromRGBO(211, 211, 211, 1)),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  print("Forgot password? button was tapped!");
+                }),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -184,20 +230,17 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  //SignInText
                   SignInText(),
-                  //Free space
                   const SizedBox(height: 55.0),
-                  // Username TextField
                   buildUsernameTextField(),
-                  // Free space
                   const SizedBox(height: 19.0),
-                  // Password TextField
                   buildPasswordTextField(),
-                  // Free space
                   const SizedBox(height: 25.0),
-                  // Remember me CheckBox
                   buildRememberMeCheckBox(),
+                  const SizedBox(height: 58.0),
+                  buildEnterButton(),
+                  const SizedBox(height: 12.0),
+                  buildForgetPasswordButton(),
                 ],
               ),
             ),
