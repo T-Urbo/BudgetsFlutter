@@ -3,12 +3,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
+  // const LoginScreen({Key? key}) : super(key: key);
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
+  bool _isObscure = false;
 
   Widget buildUsernameTextField() {
     return Container(
@@ -45,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Color.fromRGBO(211, 211, 211, 1),
               ),
             ),
-            contentPadding: const EdgeInsets.fromLTRB(27.0, 20, 0, 20),
+            contentPadding: const EdgeInsets.fromLTRB(27.0, 20.0, 0.0, 20.0),
             // prefixIcon: Icon(
             //   Icons.email,
             //   color: Colors.white,
@@ -73,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
       width: 350.0,
       // ignore: prefer_const_constructors
       child: TextField(
+        obscureText: _isObscure,
         keyboardType: TextInputType.visiblePassword,
         // ignore: prefer_const_constructors
         style: const TextStyle(
@@ -98,17 +102,46 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Color.fromRGBO(211, 211, 211, 1),
             ),
           ),
-          contentPadding: const EdgeInsets.fromLTRB(27.0, 20, 0, 20),
-          // prefixIcon: Icon(
-          //   Icons.email,
-          //   color: Colors.white,
-          // )),
+          contentPadding: const EdgeInsets.fromLTRB(27.0, 20.0, 0.0, 20.0),
+          suffixIcon: _isObscure
+              ? Padding(
+                  padding: const EdgeInsets.fromLTRB(0.0, 19.0, 22.0, 21.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      print("now text is visible!");
+                      setState(() {
+                        _isObscure = !_isObscure;
+                      });
+                    },
+                    child: Image.asset(
+                      "assets/images/icons/obscure_text_true.png",
+                      width: 24.0,
+                      height: 16.0,
+                    ),
+                  ),
+                )
+              : Padding(
+                  padding: const EdgeInsets.fromLTRB(0.0, 15.0, 21.0, 16.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      print("now text is invisible!");
+                      setState(() {
+                        _isObscure = !_isObscure;
+                      });
+                    },
+                    child: Image.asset(
+                      "assets/images/icons/obscure_text_false.png",
+                      width: 26.0,
+                      height: 25.0,
+                    ),
+                  )),
           hintText: 'Password',
           hintStyle: const TextStyle(
             color: Color.fromRGBO(186, 186, 186, 1),
             fontSize: 16.0,
             fontWeight: FontWeight.normal,
           ),
+
           // hintStyle:
         ),
       ),
@@ -194,12 +227,59 @@ class _LoginScreenState extends State<LoginScreen> {
       text: TextSpan(
         children: [
           TextSpan(
-              text: "Forgot password?",
-              style: TextStyle(color: Color.fromRGBO(211, 211, 211, 1)),
-              recognizer: TapGestureRecognizer()
-                ..onTap = () {
-                  print("Forgot password? button was tapped!");
-                }),
+            text: "Forgot password?",
+            style: const TextStyle(
+              color: Color.fromRGBO(211, 211, 211, 1),
+              fontSize: 14.0,
+              fontWeight: FontWeight.normal,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                print("Forgot password? button was tapped!");
+              },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildDontHaveAccountButton() {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: "Don't have an account?",
+            style: const TextStyle(
+              color: Color.fromRGBO(211, 211, 211, 1),
+              fontSize: 14.0,
+              fontWeight: FontWeight.normal,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                print("Don't have an account button was tapped!");
+              },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildSignUpButton() {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: "Sign up",
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 14.0,
+              fontWeight: FontWeight.normal,
+            ),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                print("Sign up button was tapped!");
+              },
+          ),
         ],
       ),
     );
@@ -241,6 +321,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   buildEnterButton(),
                   const SizedBox(height: 12.0),
                   buildForgetPasswordButton(),
+                  const SizedBox(height: 191.0),
+                  buildDontHaveAccountButton(),
+                  const SizedBox(height: 2.0),
+                  buildSignUpButton(),
                 ],
               ),
             ),
