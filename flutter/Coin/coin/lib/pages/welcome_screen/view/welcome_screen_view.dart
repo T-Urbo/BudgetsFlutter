@@ -29,12 +29,13 @@ class WelcomeScreen extends StatelessWidget {
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            buildImageSizedBox(),
-            buildGreetingsTextPageView(),
-            buildGetStartedButton(),
+            ImageSizedBox(),
+            GreetingsTextPageView(),
+            const SizedBox(height: 100.0),
+            GetStartedButton(),
           ],
         ),
       ),

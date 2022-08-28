@@ -10,20 +10,21 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'welcome_screen_widgets.dart';
 
 // ignore: use_key_in_widget_constructors
-class buildImageSizedBox extends StatelessWidget {
+class ImageSizedBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 300,
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: Image.asset('assets/images/DENGE_logo.png'),
-        ));
+      height: 250,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Image.asset('assets/images/DENGE_logo.png'),
+      ),
+    );
   }
 }
 
 // ignore: use_key_in_widget_constructors
-class buildGreetingsTextPageView extends StatelessWidget {
+class GreetingsTextPageView extends StatelessWidget {
   final _controller = PageController();
 
   @override
@@ -31,7 +32,8 @@ class buildGreetingsTextPageView extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 300,
+          height: 100,
+          width: 332,
           child: Align(
             alignment: Alignment.center,
             child: PageView(
@@ -53,25 +55,16 @@ class buildGreetingsTextPageView extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
-                      const Text(
-                        "With Our Apllication",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
                       // ignore: prefer_const_constructors
                       SizedBox(
-                        height: 200,
-                        width: 300,
+                        height: 55,
                         child: const Text(
                           "Simple intuitive design. Keep track on your savings process to meet your financial goals.",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.normal,
-                            color: Color.fromRGBO(25, 33, 38, 0.3),
+                            color: Color.fromRGBO(188, 188, 188, 1),
                           ),
                         ),
                       )
@@ -79,49 +72,60 @@ class buildGreetingsTextPageView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 300,
+                  height: 55,
                   child: Column(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       const Text(
-                        "My first flutter app",
+                        "Simple Money Tracker",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
                       const Text(
-                        "Lets go!",
+                        "It takes seconds to record daily transactions.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.grey),
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.normal,
+                          color: Color.fromRGBO(188, 188, 188, 1),
+                        ),
                       ),
+                      const Text(
+                        "Put them into clear and visualized categories such as Expense or Income.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.normal,
+                          color: Color.fromRGBO(188, 188, 188, 1),
+                        ),
+                      )
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 300,
+                  height: 55,
                   child: Column(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       const Text(
-                        "Crossplatform feels great!",
+                        "Multiple Devices",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 24.0,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
                       const Text(
-                        "React sosat'",
+                        "Keep track on savings process. Safety synchronize across devices with Bank standart security.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.grey),
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.normal,
+                          color: Color.fromRGBO(188, 188, 188, 1),
+                        ),
                       ),
                     ],
                   ),
@@ -153,7 +157,7 @@ class buildGreetingsTextPageView extends StatelessWidget {
   }
 }
 
-class buildGetStartedButton extends StatelessWidget {
+class GetStartedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
